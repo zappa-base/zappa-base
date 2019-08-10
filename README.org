@@ -31,7 +31,13 @@ entity Concert {
 entity Performance {
   ,* id : uuid
   --
-  ,* song
+  ,lyrics : text
+}
+
+entity Instrument {
+  ,*id : uuid
+  --
+  ,*name : text
 }
 
 entity Musician {
@@ -93,7 +99,8 @@ entity Scrape {
 
 Song ||--o{ Performance
 Performance }|--o{ Album
-Musician }o--o{ Performance 
+Musician }o--o{ Performance
+Musician }|--|{ Instrument
 Performance }|--o{ Concert
 
 User ||--o{ ConfirmationToken
