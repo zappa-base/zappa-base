@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap');
+
+html {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    min-height: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+    font-family: 'Roboto Slab', Serif;
+    font-size: .8rem;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    margin: 0px;
+    min-height: 100%;
+    background-color: #EEE;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: #225C6A;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    align-items: flex-start;
+}
+
+h1.title {
+    flex: 0 0 100%;
+    display: none;
+}
+
+#table-of-contents {
+    flex: 1 0 30%;
+    padding: 0 1%;
+    position: sticky;
+    top: 0px;
+    z-index: 0;
+    min-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+
+
+.outline-2 {
+    flex: 1 0 70%;
+    overflow: scroll;
+    height: 100%;
+    padding: 0 1%;
+    z-index: 10;
+    position: relative;
+    background: white;
+}
+
+pre {
+   box-shadow: 0 0 5px 0 rgba(0,0,0,.2)
+}
+
+pre, pre.src{
+  overflow: scroll;
+}
+
+pre.src:hover:before {
+    top: 2px;
+    right: 2px;
+}
+
+#postamble {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+ul {
+    padding-inline-start: 20px;
+}
+
+table {
+    display: block;
+    overflow: scroll;
+    margin: 1.2em;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.2);
+    font-size: .8rem;
+    border: 1px solid #ccc;
+    position: relative;
+                       font-family: sans-serif;
+}
+
+tbody {
+    width: 100%;
+    display: table;
+}
+
+tr:first-child {
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background: #efefef
+}
+
+tbody {
+    border: none;
+}
+
+colgroup {
+    border: none;
+}
+  /*font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* background: #222; */
+  /* align-items: center; */
+  /* line-height: 1.4; */
+
+img {
+max-width: 100%;
+}
+/* #content { */
+/*   max-width: 800px; */
+/*   background: #444; */
+/*   padding: 2% 5%; */
+/*   color: white; */
+/* } */
+
+
+/* #postamble { */
+/*   margin-top: 15px; */
+/*   font-size: .8rem; */
+/*   color: white; */
+/*   text-align: center; */
+/* } */
+
+
+/* h1, h2, h3 { */
+/*   font-weight: 400 */
+/* } */
+
+/* .example { */
+/*     max-height: 300px; */
+/* } */
+
+/* ha { */
+/*   color: #8fceeb */
+/* } */
+
+/* p:first-of-type::first-letter { */
+/*   font-size: 1.2rem; */
+/* } */
+
+/* table { */
+/*     font-family: sans-serif; */
+/*     background-color: #FFF; */
+/*     color: black; */
+/*     font-size: .6rem; */
+/*     overflow-x: scroll; */
+/*     max-width: 100%; */
+/* } */
+
+/* tr:first-child { */
+/*     font-weight: bold; */
+/*     text-transform: capitalize; */
+/* } */
+
+/* tr:nth-child(even) { */
+/*     background: #DFDFDF; */
+/* } */
