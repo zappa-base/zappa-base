@@ -15,15 +15,31 @@ skinparam monochrome true
 entity Album {
   ,* id : uuid
   --
-  ,* title: varchar
+  ,* title : varchar
   ,* release_date : timestamptz
   ,* catalog_number : varchar
+  ,* label : varchar
+}
+
+entity Concert {
+  ,* id : uuid
+  --
+  ,* date : timestamptz
+  ,* show_order : int
 }
 
 entity Performance {
   ,* id : uuid
   --
   ,* song
+}
+
+entity Musician {
+  ,* id : uuid
+  --
+  ,* name : varchar
+  ,* birth_date : timestamptz
+  , death_date : timestamptz
 }
 
 entity Song {
@@ -76,14 +92,16 @@ entity Scrape {
 }
 
 Song ||--o{ Performance
-Performance }|--|{ Album
+Performance }|--o{ Album
+Musician }o--o{ Performance 
+Performance }|--o{ Concert
 
 User ||--o{ ConfirmationToken
 User ||--o{ ResetToken
 #+END_SRC
 
 #+RESULTS:
-[[file:./images/image.png]]
+[[file:./images/models.png]]
 
 *** TODO Album Model
 *** TODO Performance Model
@@ -295,6 +313,7 @@ async function getSongList() {
     const song = {};
 
     song.title = songLink.textContent;
+    song.
     songs.push(song);
   })
 
