@@ -46,6 +46,7 @@ entity Musician {
   ,* name : varchar
   ,* birth_date : timestamptz
   , death_date : timestamptz
+  , bio : text
 }
 
 entity Song {
@@ -59,11 +60,26 @@ entity User {
   --
   ,* username : varchar 
   ,* email : varchar
-  role : varchar
+  ,* nickname : varchar
+  role : UserRole
+  status : UserStatus
   confirmed_at : timestamptz
   ,* created_at : timestamptz
   ,* updated_at : timestamptz
   deleted_at : timestamptz
+}
+ 
+enum UserRole {
+  USER
+  MODERATOR
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  DELETED
+  SUSPENDED
 }
 
 entity ConfirmationToken {
@@ -99,13 +115,14 @@ entity Scrape {
 
 Song ||--o{ Performance
 Performance }|--o{ Album
-Musician }o--o{ Performance
+Musician }o--|{ Performance
 Musician }|--|{ Instrument
 Performance }|--o{ Concert
 
 User ||--o{ ConfirmationToken
 User ||--o{ ResetToken
 #+END_SRC
+
 
 #+RESULTS:
 [[file:./images/models.png]]
@@ -124,15 +141,13 @@ Scraping will simply utilize JSDom to render a requested url. The render will be
 
 *** DONE Retrieving Raw Html
 
-[[https://github.com/bitinn/node-fetch][Node-fetch]] will be used to receive the website as a raw string and [[https://github.com/jsdom/jsdom][jsdom]] will then be used to parse that string into a navigatable DOM. [[https://www.npmjs.com/package/funcy][funcy]] will be used to extract text data from the page.
-
+[[https://github.com/bitinn/node-fetch][Node-fetch]] will be used to receive the website as a raw string and [[https://github.com/jsdom/jsdom][jsdom]] will then be used to parse that string into a navigatable DOM.
 We'll start by requiring those libraries.
 
 #+name: importLibs
 #+BEGIN_SRC js :results output :mkdirp yes :tangle "./scrapers/index.js" :cmd '~/code/js-parser-test/node_modules/babel-cli/bin/babel-node.js --presets es-2015' :exports code
 const jsdom = require('jsdom');
 const fetch = require('node-fetch');
-const funcy = require('funcy');
 #+END_SRC
 
 Next we'll use fetch to request the url and return it as a string.
