@@ -1,5 +1,5 @@
 #+EXPORT_FILE_NAME: ./index
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="./style.css" />
 #+TITLE: Zappa-Base
 
 
