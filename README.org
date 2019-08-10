@@ -1,3 +1,4 @@
+#+EXPORT_FILE_NAME: ./docs/index
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="style.css" />
 #+TITLE: Zappa-Base
 
@@ -8,7 +9,7 @@
 ** Database
 
 *** Model
-#+BEGIN_SRC plantuml :file ./images/models.png :mkdirp yes
+#+BEGIN_SRC plantuml :file ./docs/images/models.png :mkdirp yes
 skinparam monochrome true
 
 entity Album {
